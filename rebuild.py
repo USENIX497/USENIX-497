@@ -1,8 +1,13 @@
 #coding:utf-8
 
 import os
+import sys
 import time 
 import shutil
+sys.path.append(sys.path[0]+"\\An_attack_instance")
+
+sys.path.append(sys.path[0]+"\\An_attack_instance\\target")
+sys.path.reverse()
 from RF_demo import test_apk
 
 def modifyAPP(feature_path, depress_path):
@@ -11,11 +16,11 @@ def modifyAPP(feature_path, depress_path):
     caller_dict = {}
     add_calls = []
 
-    function_call_path = feature_path + '/func_calls.txt'
-    all_funcs_path = feature_path + '/all_functions.txt'
+    function_call_path = sys.path[1]+'\\'+feature_path + '/func_calls.txt'
+    all_funcs_path = sys.path[1]+'\\'+ feature_path + '/all_functions.txt'
 
-    with_d_min_state_path = feature_path + '/with_d_min_state.txt'
-
+    with_d_min_state_path =sys.path[1]+'\\'+ 'pertubation.txt'
+    print(all_funcs_path)
     for line in open(all_funcs_path, 'r', encoding='utf-8'):
         all_funcs.append(line.strip())
 
@@ -44,8 +49,8 @@ def modifyAPP(feature_path, depress_path):
         if not os.path.exists(smaliFile):
             continue
         try:
-            with open(smaliFile, "r", encoding='utf-8') as f:  # 打开文件
-                data = f.read()  # 读取文件
+            with open(smaliFile, "r", encoding='utf-8') as f:  
+                data = f.read()  
                 num1 = 0
                 localsNum = int(data[data.index(temp)+len(temp)+1:data.index(temp)+len(temp)+3].strip())
                 if localsNum < 2:
@@ -87,20 +92,19 @@ def modifyAPP(feature_path, depress_path):
 
 if __name__ == '__main__':
 
-    apk_name = '6D483C8633F36854AA6F86932030BD0B05124F48A5FDDCB843BA45659546069E'
-    apk_path = 'org_apk/' + apk_name
+    apk_name = 'org_apk'
+    apk_path = 'An_attack_instance/'+apk_name
     depress_path = 'depress/'+apk_name
-    os.system('apktool.bat d %s -o %s -f'%(apk_path, depress_path))
-    feature_path = 'feature/' + apk_name
+    os.system(sys.path[-1]+'\\tools\\apktool.bat d %s -o %s -f'%(apk_path, depress_path))
+    feature_path = 'feature'
     modifyAPP(feature_path, depress_path)
     # # rebuild
-    os.system('apktool.bat b %s -f'%(depress_path))
+    os.system(sys.path[-1]+'\\tools\\apktool.bat b %s -f'%(depress_path))
 
-    apk_name = '6D483C8633F36854AA6F86932030BD0B05124F48A5FDDCB843BA45659546069E'
-    apk_path = 'org_apk/' + apk_name
-    modified_apk = 'modified_apk/' + apk_name
-    # test 
-    test(apk_path)
-    test(modified_apk)
+    apk_path = 'An_attack_instance/'+'org_apk'
+    modified_apk = 'An_attack_instance/'+'modified_apk'
+    # test
+    test_apk(apk_path)
+    test_apk(modified_apk)
     # sign
 
