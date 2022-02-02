@@ -44,8 +44,8 @@ def modifyAPP(feature_path, depress_path):
         if not os.path.exists(smaliFile):
             continue
         try:
-            with open(smaliFile, "r", encoding='utf-8') as f:  # 打开文件
-                data = f.read()  # 读取文件
+            with open(smaliFile, "r", encoding='utf-8') as f: 
+                data = f.read()  
                 num1 = 0
                 localsNum = int(data[data.index(temp)+len(temp)+1:data.index(temp)+len(temp)+3].strip())
                 if localsNum < 2:
@@ -79,7 +79,7 @@ def modifyAPP(feature_path, depress_path):
                 data = data.replace(temp + ' ' + str(localsNum), replaceItem)
             with open(smaliFile, "w", encoding='utf-8') as f:
                 f.write(data)
-            # input()
+            
         except Exception as e:
             print(e)
 
