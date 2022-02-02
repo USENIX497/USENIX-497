@@ -89,9 +89,9 @@ if __name__ == '__main__':
 
     apk_name = '6D483C8633F36854AA6F86932030BD0B05124F48A5FDDCB843BA45659546069E'
     apk_path = 'org_apk/' + apk_name
-    depress_path = 'Depress/'+apk_name
+    depress_path = 'depress/'+apk_name
     os.system('apktool.bat d %s -o %s -f'%(apk_path, depress_path))
-    feature_path = 'features/' + apk_name
+    feature_path = 'feature/' + apk_name
     modifyAPP(feature_path, depress_path)
     # # rebuild
     os.system('apktool.bat b %s -f'%(depress_path))
