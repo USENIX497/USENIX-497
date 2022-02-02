@@ -14,7 +14,7 @@ def modifyAPP(feature_path, depress_path):
     function_call_path = feature_path + '/func_calls.txt'
     all_funcs_path = feature_path + '/all_functions.txt'
 
-    with_d_min_state_path = feature_path + '/with_d_min_state.txt'
+    with_d_min_state_path = feature_path + '/perturbation.txt'
 
     for line in open(all_funcs_path, 'r', encoding='utf-8'):
         all_funcs.append(line.strip())
