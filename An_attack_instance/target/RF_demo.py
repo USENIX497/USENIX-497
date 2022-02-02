@@ -15,7 +15,7 @@ INVOKE_PATTERN = re.compile(
 CLASS_NAME_PATTERN = re.compile('\.class.*(?P<clsname>L.*)(?:;)')
 METHOD_BLOCK_PATTERN = re.compile('\.method.* (?P<methodname>.*)\n.*\n((?:.|\n)*?)\.end method')
 packages_list = []
-for line in open('granularity/packages_mama.txt', 'r', encoding='utf-8'):
+for line in open(sys.path[0]+'/packages_mama.txt', 'r', encoding='utf-8'):
     packages_list.append(line.strip())
 allpacks=[]
 for i in packages_list:
@@ -154,13 +154,13 @@ def get_package_caller_callee_from_function_pair(function_pair):
 
     return caller, callee
 def test_apk(apk_path):
-    model = model_load('my_model_RF.m')
-    model_pca = joblib.load('pca.m')
+    model = model_load(sys.path[0]+'/my_model_RF.m')
+    model_pca = joblib.load(sys.path[0]+'/pca.m')
     apk_name = apk_path.split('/')[-1]
     
     # apk_path = modified_apk
     depress_path = 'depress/'+apk_name
-    os.system('apktool.bat d %s -o %s -f'%(apk_path, depress_path))
+    os.system(sys.path[-1]+'\\tools\\apktool.bat d %s -o %s -f'%(apk_path, depress_path))
     all_funcs, func_calls = get_all_funcs_and_func_calls_from_smali_folder_path(depress_path)
     txt_path = 'feature'
     if not os.path.exists(txt_path):
