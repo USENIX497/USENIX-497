@@ -6,7 +6,7 @@
 ├── Readme.md                                   // Help   
 ├── Feature exatraciton  
 &emsp;├── apktool.bat                  // Decompilation the APK    
- &emsp;    ├── apktool.jar                  // Decompilation the APK   
+&emsp;├── apktool.jar                  // Decompilation the APK   
 ├── rebuild.py                  //  Manipulate the samli codes    
 ├── An attack instance   
 &emsp;     ├── org_apk                 //  An APK example    
