@@ -25,5 +25,5 @@ jdk 1.8
 We provide part of the codes in this paper. The codes consist of Four parts:   
 1) extract graph feature from the APK file.   
 2) Generate the adversarial example through BagAmmo algorithm.  
-3)According to the perturbation manipulate the samli codes and rebuild to APK file.  
-4)An attack instance. We open the codes of part 1, part 2 and  part 4, the other codes will be available soon.
+3) According to the perturbation manipulate the samli codes and rebuild to APK file.  
+4) An attack instance. We open the codes of part 1, part 2 and  part 4, the other codes will be available soon.
