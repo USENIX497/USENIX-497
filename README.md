@@ -5,7 +5,7 @@
 ############ Description of directory structure  
 ├── Readme.md                                   // Help  
 ├── Feature exatraciton  
-     ├── apktool.bat                  // Decompilation the APK  
+          ├── apktool.bat                  // Decompilation the APK  
      ├── apktool.jar                  // Decompilation the APK   
 ├── rebuild.py                  //  Manipulate the samli codes  
 ├── An attack instance   
